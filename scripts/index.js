@@ -58,6 +58,41 @@ function bgImage(data){
     }, 4000);
 }
 
+function scroolMouse(){
+
+    const scrollRow = document.querySelector('.row');
+
+    scrollRow.addEventListener('wheel', (evt) => {
+        if (Math.abs(evt.deltaX) === 0) {
+            evt.preventDefault();
+            scrollRow.scrollLeft += evt.deltaY * 7; // Adjust sensitivity here
+        }
+    });
+
+};
+
+
+function scrollButton(){
+
+    const row = document.querySelector('.row');
+    const leftArrow = document.querySelector('.arrow.left');
+    const rightArrow = document.querySelector('.arrow.right');
+
+    const scrollAmount = 500; // customize this based on your design
+
+    leftArrow.addEventListener('click', () => {
+    row.scrollLeft -= scrollAmount;
+    });
+
+    rightArrow.addEventListener('click', () => {
+    row.scrollLeft += scrollAmount;
+    });
+
+};
+
+scroolMouse();
+scrollButton();
+
 
 
 
