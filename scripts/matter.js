@@ -68,14 +68,43 @@ function getmainBg(item){
     const div = document.querySelector('.mainContainerWrap');
     const styling = div.style;
 
-    styling.backgroundImage = `url('${image}')`;
+    styling.backgroundImage = ` url('${image}')`;
     styling.backgroundSize = 'cover';
-    styling.backgroundPosition = 'center';
+    styling.backgroundPosition = 'center right';
     styling.backgroundSize = '100% 100%';
 };
 
+
+const scrollRow = document.querySelector('.castItem');
+
+scrollRow.addEventListener('wheel', (evt) => {
+    if (Math.abs(evt.deltaX) === 0) {
+        evt.preventDefault();
+        scrollRow.scrollLeft += evt.deltaY * 3; // Adjust sensitivity here
+    }
+});
+
+function scrollButton(){
+
+    const row = document.querySelector('.castItem');
+    const leftArrow = document.querySelector('.arrow.left');
+    const rightArrow = document.querySelector('.arrow.right');
+
+    const scrollAmount = 500; // customize this based on your design
+
+    leftArrow.addEventListener('click', () => {
+    row.scrollLeft -= scrollAmount;
+    });
+
+    rightArrow.addEventListener('click', () => {
+    row.scrollLeft += scrollAmount;
+    });
+
+};
 
 
 getMovieData(item);
 getcast(item);
 getmainBg(item);
+scrollButton();
+
